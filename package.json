@@ -1,0 +1,47 @@
+{
+  "version": "0.0.0",
+  "name": "xcode-project-pbxproj",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HillLiu/xcode-project-pbxproj"
+  },
+  "homepage": "https://github.com/HillLiu/xcode-project-pbxproj",
+  "description": "TODO: description",
+  "keywords": [
+    "xcode-project-pbxproj"
+  ],
+  "author": "Hill <hill@kimo.com>",
+  "license": "ISC",
+  "dependencies": {
+    "simple-plist": "^1.0.0",
+    "uuid": "^3.3.2",
+    "process": "*",
+    "reshow-constant": "*",
+    "reshow-runtime": "*"
+  },
+  "devDependencies": {
+    "reshow-unit-dom": "*"
+  },
+  "exports": {
+    "require": "./build/cjs/src/index.js",
+    "import": "./build/es/src/index.mjs"
+  },
+  "main": "./src/index.js",
+  "bin": {
+    "xcode-flutter": "./src/index.js"
+  },
+  "scripts": {
+    "update-compile-sh": "yo reshow:compile-sh",
+    "start": "ws",
+    "format": "prettier-eslint --write 'src/**/*.js' 'ui/**/*.js*'",
+    "mochaFor": "mocha -r global-jsdom/register",
+    "mocha": "npm run mochaFor -- 'src/**/__tests__/*.js'",
+    "test": "npm run mocha",
+    "prepublishOnly": "npm run test"
+  },
+  "files": [
+    "package.json",
+    "README.md",
+    "src"
+  ]
+}
