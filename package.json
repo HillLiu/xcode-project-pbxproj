@@ -22,10 +22,6 @@
   "devDependencies": {
     "reshow-unit-dom": "*"
   },
-  "exports": {
-    "require": "./build/cjs/src/index.js",
-    "import": "./build/es/src/index.mjs"
-  },
   "main": "./src/index.js",
   "bin": {
     "xcode-flutter": "./src/index.js"
