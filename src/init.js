@@ -39,6 +39,7 @@ const searchProjectPbxproj = (p) => {
 const init = (props) => {
   const cwd = process.cwd();
   const arg2 = process.argv[2];
+  const arg3 = process.argv[3];
   const willAdd = arg2 ? path.join(cwd, process.argv[2]) : null;
   const pbxprojFile = searchProjectPbxproj(cwd);
 
@@ -64,7 +65,15 @@ const init = (props) => {
           idMap[d.fullPath] = oGroup.uuid;
         },
       });
-      fs.writeFileSync("test.txt", myProj.writeSync());
+      if (null !== arg3) {
+        if (arg3 === "--write") {
+          fs.writeFileSync(pbxprojFile, myProj.writeSync());
+        } else {
+          fs.writeFileSync(path.join(cwd, arg3), myProj.writeSync());
+        }
+      } else {
+        console.log(myProj.writeSync());
+      }
     });
   } else {
     console.log(`xcode-pbx [your-code-folder]`);
