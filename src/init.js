@@ -40,8 +40,14 @@ const init = (props) => {
   const cwd = process.cwd();
   const arg2 = process.argv[2];
   const arg3 = process.argv[3];
-  const willAdd = arg2 ? path.join(cwd, process.argv[2]) : null;
   const pbxprojFile = searchProjectPbxproj(cwd);
+
+  if (arg2 === 'search') {
+    console.log({pbxprojFile});
+    process.exit();
+  }
+
+  const willAdd = arg2 ? path.join(cwd, process.argv[2]) : null;
 
   if (isDir(willAdd) && pbxprojFile) {
     const myProj = pbxProject(pbxprojFile);
@@ -65,7 +71,7 @@ const init = (props) => {
           idMap[d.fullPath] = oGroup.uuid;
         },
       });
-      if (null !== arg3) {
+      if (null != arg3) {
         if (arg3 === "--write") {
           fs.writeFileSync(pbxprojFile, myProj.writeSync());
         } else {
@@ -76,7 +82,12 @@ const init = (props) => {
       }
     });
   } else {
-    console.log(`xcode-pbx [your-code-folder]`);
+    console.log(`
+      xcode-flutter [your-code-folder]
+      xcode-flutter [your-code-folder] --write
+      xcode-flutter [your-code-folder] [output-file] 
+      xcode-flutter search 
+    `);
   }
 };
 
