@@ -1,4 +1,4 @@
-# `xcode-project-pbxproj`
+# `xcode project.pbxproj cli for flutter`
 
 > TODO: description 
 
