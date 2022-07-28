@@ -11,5 +11,8 @@
 ## Usage
 
 ```
-
+      xcode-flutter [your-code-folder]
+      xcode-flutter [your-code-folder] --write
+      xcode-flutter [your-code-folder] [output-file]
+      xcode-flutter search
 ```
